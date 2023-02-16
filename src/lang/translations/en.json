@@ -1,0 +1,19 @@
+{
+    "homePage": "Home",
+    "searchPage": "Search meals",
+    "searchLetter": "Meals by letter",
+    "searchIngredients": "Meals by ingredients",
+    "searchCountry": "Meals by country",
+
+    "theme-light": "Light",
+    "theme-dark": "Dark",
+
+    "search-input": "Search for ",
+
+    "ws": {
+        "ws-ingredients": "ingredients 🥦",
+        "ws-letter": "letter 🍔",
+        "ws-country": "сountry 🌍",
+        "ws-name": "name 🍇"
+    }
+}
