@@ -1,5 +1,4 @@
 <template>
-    <Header />
     <card>
         <router-view v-slot="{ Component }">
             <transition name="fade" mode="out-in">
@@ -10,10 +9,9 @@
 </template>
 
 <script>
-import Header from "./UI/Header.vue";
 import Card from "./UI/Card.vue";
 export default {
-    components: { Header, Card },
+    components: { Card },
 };
 </script>
 

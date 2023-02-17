@@ -11,6 +11,7 @@ module.exports = {
             colors: {
                 primary: "#357960",
                 secondary: "#0cabba",
+                warning: "#f5625d",
             },
             boxShadow: {
                 light: "0 1px 5px  rgba(0, 0, 0, 0.1)",

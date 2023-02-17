@@ -15,5 +15,6 @@
         "ws-letter": "letter 🍔",
         "ws-country": "сountry 🌍",
         "ws-name": "name 🍇"
-    }
+    },
+    "error_msg": "Nothing to found."
 }

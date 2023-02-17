@@ -1,6 +1,6 @@
 <template>
     <button
-        class="transition-colors hover:text-primary dark:hover:text-primary dark:text-white py-5 px-3 min-w-[75px]"
+        class="transition-colors hover:text-primary dark:hover:text-primary dark:text-white py-5 px-3 min-w-[85px]"
         @click="$emit('switch')"
     >
         <Transition name="fade" mode="out-in">

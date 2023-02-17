@@ -1,13 +1,21 @@
 <template>
-    <Transition>
-        <div v-if="isShow">
-            <router-view></router-view>
-        </div>
-    </Transition>
+    <Header />
+    <router-view v-slot="{ Component }">
+        <Transition>
+            <div v-if="isShow">
+                <component :is="Component"></component>
+            </div>
+        </Transition>
+    </router-view>
 </template>
 
 <script>
+import Header from "./components/UI/Header.vue";
+
 export default {
+    components: {
+        Header,
+    },
     data() {
         return {
             isShow: false,
