@@ -14,8 +14,8 @@ module.exports = {
                 warning: "#f5625d",
             },
             boxShadow: {
-                light: "0 1px 5px  rgba(0, 0, 0, 0.1)",
-                dark: "0 1px 5px  rgba(141, 141, 141, 0.2)",
+                light: "0 1px 5px rgba(0, 0, 0, 0.1)",
+                dark: "0 1px 5px rgba(141, 141, 141, 0.2)",
             },
         },
     },

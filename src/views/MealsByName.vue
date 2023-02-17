@@ -1,16 +1,9 @@
 <template>
     <div>
         <input-search v-model="inputValue" :tWriter="'ws.ws-name'" />
-        <div
-            v-if="meals.length"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 py-8"
-        >
-            <meal-item
-                v-for="meal of meals"
-                :key="meal.idMeal"
-                :meal="meal"
-            ></meal-item>
-        </div>
+
+        <meal-list v-if="meals.length" :meals="meals" />
+
         <div v-else-if="inputValue != '' && isMeals" class="w-full mt-4">
             {{ $t("error_msg") }}
         </div>
@@ -21,12 +14,12 @@
 import store from "../store";
 
 import InputSearch from "../components/UI/InputSearch.vue";
-import MealItem from "../components/MealItem.vue";
+import MealList from "../components/MealList.vue";
 
 import { debounce } from "../modules/debounce";
 
 export default {
-    components: { InputSearch, MealItem },
+    components: { InputSearch, MealList },
 
     data() {
         return {

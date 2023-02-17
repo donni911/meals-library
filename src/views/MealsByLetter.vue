@@ -10,30 +10,19 @@
                 {{ letter }}
             </router-link>
         </div>
-        <button @click="ok = !ok">ok</button>
-        <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 py-8"
-        >
-            <TransitionGroup name="list" tag="ul">
-                <meal-item
-                    v-for="meal of meals"
-                    :key="meal.idMeal"
-                    :meal="meal"
-                ></meal-item>
-            </TransitionGroup>
-            <!-- https://vuejs.org/guide/built-ins/transition-group.html#staggering-list-transitions -->
-        </div>
+        <meal-list :meals="meals" />
     </div>
 </template>
 
+<!-- https://vuejs.org/guide/built-ins/transition-group.html#staggering-list-transitions -->
 <script>
 import store from "../store";
 
-import MealItem from "../components/MealItem.vue";
+import MealList from "../components/MealList.vue";
 
 export default {
     components: {
-        MealItem,
+        MealList,
     },
     data() {
         return {
@@ -58,14 +47,3 @@ export default {
     },
 };
 </script>
-
-<style>
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 20s linear;
-}
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
-</style>

@@ -1,15 +1,27 @@
 <template>
     <div class="flex justify-center flex-col"></div>
+    <meal-list :meals="meals" />
 </template>
 
 <script>
-import axiosClient from "../axiosClient.js";
+import MealList from "../components/MealList.vue";
 
 export default {
+    components: {
+        MealList,
+    },
+
+    computed: {
+        meals() {
+            return this.$store.state.mealsByLetter;
+        },
+    },
+
     mounted() {
-        async () => {
-            const response = await axiosClient.get("list.php?i=list");
-        };
+        this.$store.dispatch(
+            "searchMealsByLetter",
+            this.$route.params.letter || "A"
+        );
     },
 };
 </script>
