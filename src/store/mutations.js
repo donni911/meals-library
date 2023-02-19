@@ -15,7 +15,17 @@ function setMealsByCountry(state, meals) {
 }
 
 function setLanguage(state, lang) {
+    localStorage.setItem("lang", lang);
     state.lang = lang;
+
+}
+
+function initialiseLang(state) {
+    if (localStorage.getItem("lang")) {
+        state.lang = localStorage.getItem("lang");
+    } else {
+        state.lang = "en";
+    }
 }
 
 export {
@@ -24,4 +34,5 @@ export {
     setMealsByIngredient,
     setMealsByCountry,
     setLanguage,
+    initialiseLang,
 };

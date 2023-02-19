@@ -3,16 +3,11 @@
         class="bg-white dark:bg-slate-200 shadow rounded-xl flex flex-col hover:scale-105 transition"
     >
         <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
-            <img
-                v-show="imageLoaded"
-                :src="meal.strMealThumb"
-                :alt="meal.strMeal"
-                class="rounded-t-xl w-full h-48 object-cover"
-                @load="onImageLoaded"
+            <image-wrap
+                :meal="meal"
+                :classes="'rounded-t-xl w-full h-48  object-cover'"
             />
         </router-link>
-
-        {{ imageLoaded }}
 
         <div class="px-6 py-3">
             <h3 class="font-semibold">{{ meal.strMeal }}</h3>
@@ -30,10 +25,12 @@
 
 <script>
 import LinkButton from "../components/UI/LinkButton.vue";
+import ImageWrap from "../components/UI/ImageWrap.vue";
 
 export default {
     components: {
         LinkButton,
+        ImageWrap,
     },
 
     data() {
@@ -54,3 +51,14 @@ export default {
     },
 };
 </script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.1s linear;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>

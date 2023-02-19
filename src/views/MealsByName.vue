@@ -1,12 +1,7 @@
 <template>
     <div>
         <input-search v-model="inputValue" :tWriter="'ws.ws-name'" />
-
-        <meal-list v-if="meals.length" :meals="meals" />
-
-        <div v-else-if="inputValue != '' && isMeals" class="w-full mt-4">
-            {{ $t("error_msg") }}
-        </div>
+        <meal-list :meals="meals" />
     </div>
 </template>
 

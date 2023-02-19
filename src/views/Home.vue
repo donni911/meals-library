@@ -1,6 +1,8 @@
 <template>
-    <div class="flex justify-center flex-col"></div>
-    <meal-list :meals="meals" />
+    <div>
+        <div class="flex justify-center flex-col"></div>
+        <meal-list :meals="meals" />
+    </div>
 </template>
 
 <script>
@@ -13,7 +15,7 @@ export default {
 
     computed: {
         meals() {
-            return this.$store.state.mealsByLetter;
+            return this.$store.state.mealsByLetter || [];
         },
     },
 

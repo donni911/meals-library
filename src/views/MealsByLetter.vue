@@ -14,7 +14,6 @@
     </div>
 </template>
 
-<!-- https://vuejs.org/guide/built-ins/transition-group.html#staggering-list-transitions -->
 <script>
 import store from "../store";
 
@@ -32,7 +31,7 @@ export default {
 
     computed: {
         meals() {
-            return store.state.mealsByLetter;
+            return store.state.mealsByLetter || [];
         },
     },
 

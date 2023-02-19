@@ -39,7 +39,7 @@
                             </Transition></router-link
                         >
                         <router-link
-                            :to="{ name: 'byIngredients' }"
+                            :to="{ name: 'ingredients' }"
                             class="block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
                         >
                             <Transition name="fade" mode="out-in">
@@ -82,7 +82,7 @@ export default {
             return this.$data.isDark ? "theme-dark" : "theme-light";
         },
         langText() {
-            return this.$data.isEnglish ? "EN" : "UA";
+            return store.state.lang == "en" ? "EN" : "UA";
         },
     },
     methods: {
@@ -108,11 +108,17 @@ export default {
             }
         },
     },
+    beforeCreate() {
+        this.$store.commit("initialiseLang");
+    },
+
     mounted() {
+        //init theme
         window.matchMedia("(prefers-color-scheme: dark)").matches
             ? (this.$data.isDark = true)
             : false;
 
+        //init lang
         this.$i18n.locale = store.state.lang;
     },
 };

@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    sourcemap: "inline",
     plugins: [vue()],
     resolve: {
         alias: [
@@ -10,6 +11,7 @@ export default defineConfig({
                 find: "vue-i18n",
                 replacement: "vue-i18n/dist/vue-i18n.cjs.js",
             },
+            { find: "@image", replacement: "./src/assets" },
         ],
     },
 });

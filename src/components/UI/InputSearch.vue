@@ -3,7 +3,7 @@
         <input
             name="search"
             type="text"
-            class="rounded border-2 border-gray-200 w-full peer h-16 focus:ring-primary focus:border-primary"
+            class="rounded border-2 border-gray-200 w-full peer h-16 focus:ring-primary focus:border-primary dark:bg-slate-200"
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
         />

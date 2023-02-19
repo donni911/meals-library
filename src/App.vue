@@ -2,9 +2,7 @@
     <Header />
     <router-view v-slot="{ Component }">
         <Transition>
-            <div v-if="isShow">
-                <component :is="Component"></component>
-            </div>
+            <component :is="Component" v-if="isShow"></component>
         </Transition>
     </router-view>
 </template>
