@@ -16,5 +16,7 @@
         "ws-country": "сountry 🌍",
         "ws-name": "name 🍇"
     },
-    "error_msg": "Nothing to found."
+    "error_msg": "Nothing to found.",
+    "back": "Back",
+    "no-meals": "There are no meals"
 }

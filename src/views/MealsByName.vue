@@ -31,7 +31,12 @@ export default {
     watch: {
         inputValue(value) {
             this.isMeals = false;
-            this.searchMeals(value);
+
+            if (value) {
+                this.searchMeals(value);
+            } else {
+                store.commit("setSearchedMeals", []);
+            }
         },
     },
 

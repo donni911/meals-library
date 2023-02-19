@@ -42,7 +42,13 @@ export default {
     },
 
     mounted() {
-        store.dispatch("searchMealsByLetter", this.$route.params.letter || "A");
+        store.dispatch("searchMealsByLetter", this.$route.params.letter);
     },
 };
 </script>
+
+<style scoped>
+.router-link-active {
+    @apply text-primary -translate-y-4 px-3;
+}
+</style>

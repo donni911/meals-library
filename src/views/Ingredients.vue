@@ -1,11 +1,16 @@
 <template>
     <div>
         <h1 class="text-4xl font-bold mb-4 text-primary">Ingredients</h1>
+        <input-search
+            v-model="inputValue"
+            :tWriter="'ws.ws-ingredients'"
+            class="mb-4"
+        />
         <router-link
-            v-for="ingredient of ingredients"
+            v-for="ingredient of computedIngredients"
             :to="{
                 name: 'byIngredients',
-                params: { ingredients: ingredient.idIngredient },
+                params: { ingredients: ingredient.strIngredient },
             }"
             :key="ingredient.idIngredient"
             class="block bg-white dark:bg-slate-200 rounded p-3 mb-3 shadow"
@@ -27,8 +32,20 @@ export default {
 
     data() {
         return {
-            ingredients: null,
+            inputValue: "",
+            ingredients: [],
         };
+    },
+
+    computed: {
+        computedIngredients() {
+            if (!this.inputValue.length) {
+                return this.ingredients;
+            }
+            return this.ingredients.filter((ingredient) =>
+                ingredient.strIngredient.toLowerCase().includes(this.inputValue)
+            );
+        },
     },
 
     mounted() {

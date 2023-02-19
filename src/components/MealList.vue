@@ -10,8 +10,10 @@
                 :meal="meal"
             ></meal-item>
         </div>
-        <div v-if="!meals.length" class="flex justify-center">
-            There are no meals
+        <div v-if="!meals.length" class="flex justify-center m-4">
+            <Transition name="fade" mode="out-in">
+                <span :key="$t('no-meals')">{{ $t("no-meals") }}</span>
+            </Transition>
         </div>
     </div>
 </template>
