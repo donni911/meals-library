@@ -22,20 +22,20 @@
                         class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition"
                         :class="{
                             'translate-x-0 translate-y-[5px] -rotate-45  delay-200':
-                                menuOpen,
+                                showMenu,
                         }"
                     ></span>
                     <span
                         class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition my-[3px]"
                         :class="{
-                            'translate-x-1.5 opacity-0 delay-100': menuOpen,
+                            'translate-x-1.5 opacity-0 delay-100': showMenu,
                         }"
                     ></span>
                     <span
                         class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition"
                         :class="{
                             'translate-x-0 translate-y-[-5px] rotate-45 delay-300':
-                                menuOpen,
+                                showMenu,
                         }"
                     ></span>
                 </button>
@@ -43,7 +43,7 @@
 
             <ul
                 :class="
-                    menuOpen
+                    showMenu
                         ? '-lg:opacity-100 -lg:translate-y-0 -lg:pointer-events-auto'
                         : '-lg:opacity-0  -lg:-translate-y-5 -lg:pointer-events-none'
                 "
@@ -79,24 +79,27 @@ import logo from "../../assets/logo.svg";
 export default {
     components: { SwitchButton, logo },
 
-    props: ["menuItems", "menuOpen"],
+    props: ["menuItems", "showMenu"],
+
     data() {
         return {
             isDark: false,
             isEnglish: store.state.lang,
+            // showMenu: false,
         };
     },
     computed: {
         themeText() {
             return this.$data.isDark ? "theme-dark" : "theme-light";
         },
+
         langText() {
             return store.state.lang == "en" ? "EN" : "UA";
         },
     },
     methods: {
         toggleMenu() {
-            this.$emit("menu-active", this.menuOpen);
+            this.$emit("menu-active");
         },
 
         themeSwitch() {

@@ -29,9 +29,9 @@ export default {
         };
     },
 
-    mounted() {
+    async mounted() {
         for (let i = 0; i < 10; i++) {
-            axiosClient.get("random.php").then(({ data }) => {
+            await axiosClient.get("random.php").then(({ data }) => {
                 this.meals.push(data.meals[0]);
             });
         }

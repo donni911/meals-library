@@ -1,8 +1,8 @@
 <template>
     <Header
         :menu-items="menuItems"
-        :menu-open="showMenu"
         @menu-active="toggleOverlay"
+        :show-menu="showMenu"
     />
     <router-view v-slot="{ Component }" class="max-w-[1560px] mx-auto">
         <Transition>
@@ -10,12 +10,11 @@
         </Transition>
     </router-view>
     <div
-        @click="showMenu = false"
+        @click="toggleOverlay"
         class="bg-black opacity-0 fixed inset-0 pointer-events-none transition-opacity lg:hidden"
-        :class="{ 'opacity-40 pointer-events-auto': showMenu }"
+        :class="{ 'opacity-40 pointer-events-auto': showMenu == true }"
     ></div>
 </template>
-
 <script>
 import Header from "./components/UI/Header.vue";
 
@@ -36,6 +35,7 @@ export default {
             ],
         };
     },
+
     methods: {
         toggleOverlay() {
             this.showMenu = !this.showMenu;
@@ -52,15 +52,6 @@ export default {
 </script>
 
 <style>
-/* .v-enter-active,
-.v-leave-active {
-    transition: opacity 0.5s ease;
-}
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-} */
-
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.1s linear;

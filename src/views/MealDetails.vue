@@ -8,7 +8,7 @@
                 <div class="-sm:w-full -lg:w-1/2">
                     <image-wrap
                         :meal="meal"
-                        :classes="'lg:w-[100%] h-auto rounded-md object-cover aspect-square'"
+                        :classes="'pt-[100%] [&>img]:absolute [&>img]:rounded [&>img]:inset-0 [&>img]:h-full [&>img]:w-full [&>img]:object-cover'"
                     />
                 </div>
                 <div
@@ -115,7 +115,9 @@
                             {{ $t("description") }}
                         </h2>
                     </Transition>
-                    <p class="my-3">{{ meal.strInstructions }}</p>
+                    <p class="dark:text-white my-3">
+                        {{ meal.strInstructions }}
+                    </p>
                 </div>
             </div>
         </section>

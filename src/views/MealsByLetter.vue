@@ -14,7 +14,7 @@
                 :to="{ name: 'byLetter', params: { letter } }"
                 v-for="letter of letters"
                 :key="letter"
-                class="uppercase py-1.5 px-2.5 sm:p-1.5 sm:hover:-translate-y-2 dark:text-white dark:hover:text-primary hover:text-primary transition-all"
+                class="uppercase py-1.5 px-2.5 sm:p-1.5 sm:hover:-translate-y-4 dark:text-white dark:hover:text-primary hover:text-primary transition-all"
             >
                 {{ letter }}
             </router-link>

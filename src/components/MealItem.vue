@@ -5,7 +5,7 @@
         <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
             <image-wrap
                 :meal="meal"
-                :classes="'rounded-t-xl aspect-video object-cover'"
+                :classes="'pt-[56%] [&>img]:absolute [&>img]:rounded [&>img]:inset-0 [&>img]:h-full [&>img]:w-full [&>img]:object-cover'"
             />
         </router-link>
 
