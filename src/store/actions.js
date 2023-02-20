@@ -20,6 +20,7 @@ export function searchMealsByIngredient({ commit }, ingredient) {
 }
 
 export function searchMealsByCountry({ commit }, country) {
+    console.log(country);
     axiosClient.get(`filter.php?a=${country}`).then(({ data }) => {
         commit("setMealsByCountry", data.meals);
     });

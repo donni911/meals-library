@@ -14,9 +14,13 @@
                 :to="{ name: 'byLetter', params: { letter } }"
                 v-for="letter of letters"
                 :key="letter"
-                class="uppercase py-1.5 px-2.5 sm:p-1.5 sm:hover:-translate-y-4 dark:text-white dark:hover:text-primary hover:text-primary transition-all"
+                class="uppercase py-1.5 group px-2.5 sm:p-1.5 dark:text-white dark:hover:text-primary hover:text-primary transition-all pointer-events-auto"
             >
-                {{ letter }}
+                <span
+                    class="inline-block sm:group-hover:-translate-y-4 transition-transform"
+                >
+                    {{ letter }}
+                </span>
             </router-link>
         </div>
         <meal-list :meals="meals" />
@@ -58,6 +62,6 @@ export default {
 
 <style scoped>
 .router-link-active {
-    @apply text-primary sm:-translate-y-4 sm:px-3;
+    @apply text-primary sm:-translate-y-4 sm:px-3 pointer-events-none;
 }
 </style>

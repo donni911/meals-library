@@ -71,34 +71,25 @@
                         </ul>
                     </div>
                     <div class="my-4 text-lg md:pl-4">
-                        <div v-if="meal.strCategory">
+                        <div v-if="meal.strCategory" class="dark:text-white">
                             <Transition name="fade" mode="out-in">
-                                <strong
-                                    class="dark:text-white"
-                                    :key="$t('category')"
-                                >
+                                <strong :key="$t('category')">
                                     {{ $t("category") }}:
                                 </strong>
                             </Transition>
                             {{ meal.strCategory }}
                         </div>
-                        <div v-if="meal.strArea">
+                        <div v-if="meal.strArea" class="dark:text-white">
                             <Transition name="fade" mode="out-in">
-                                <strong
-                                    class="dark:text-white"
-                                    :key="$t('country')"
-                                >
+                                <strong :key="$t('country')">
                                     {{ $t("country") }}:
                                 </strong>
                             </Transition>
                             {{ meal.strArea }}
                         </div>
-                        <div v-if="meal.strTags">
+                        <div v-if="meal.strTags" class="dark:text-white">
                             <Transition name="fade" mode="out-in">
-                                <strong
-                                    class="dark:text-white"
-                                    :key="$t('tags')"
-                                >
+                                <strong :key="$t('tags')">
                                     {{ $t("tags") }}:
                                 </strong>
                             </Transition>

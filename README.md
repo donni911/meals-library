@@ -11,3 +11,6 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ### Front development
 
 node version = v18.12.1
+
+<!-- https://www.youtube.com/watch?v=2wh4feX5LfU -->
+<!-- https://www.youtube.com/watch?v=r9OmM2FpcC8 -->

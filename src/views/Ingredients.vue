@@ -14,7 +14,10 @@
             :tWriter="'ws.ws-ingredients'"
             class="mb-4"
         />
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div
+            v-if="computedIngredients.length"
+            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+        >
             <router-link
                 v-for="ingredient of computedIngredients"
                 :to="{
@@ -29,6 +32,13 @@
                     v-html="highlightText(ingredient.strIngredient, inputValue)"
                 ></h3>
             </router-link>
+        </div>
+        <div v-if="!computedIngredients.length" class="flex justify-center m-4">
+            <Transition name="fade" mode="out-in">
+                <span :key="$t('no-ingredients')" class="dark:text-white">{{
+                    $t("no-ingredients")
+                }}</span>
+            </Transition>
         </div>
     </div>
 </template>

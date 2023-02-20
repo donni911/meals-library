@@ -12,6 +12,8 @@
     "search-input-name": "Search by name ",
     "search-input-letter": "Search by letter ",
     "search-input-ingredient": "Search by ingredient ",
+    "search-input-country": "Search by country ",
+
     "random-meals": "Random meals",
 
     "ws": {
@@ -23,6 +25,7 @@
     "error_msg": "Nothing to found.",
     "back": "Back",
     "no-meals": "There are no meals",
+    "no-ingredients": "There are no ingredients",
 
     "watch-youtube": "Watch on Youtube",
     "watch-src": "Watch Source",

@@ -47,7 +47,7 @@
                         ? '-lg:opacity-100 -lg:translate-y-0 -lg:pointer-events-auto'
                         : '-lg:opacity-0  -lg:-translate-y-5 -lg:pointer-events-none'
                 "
-                class="flex -lg:flex-col -lg:w-full -lg:shadow-dark -lg:fixed -lg:top-0 -lg:pt-16 -lg:left-0 bg-white z-10 dark:bg-black transition"
+                class="c-nav"
             >
                 <li v-for="item in menuItems">
                     <router-link
@@ -139,3 +139,12 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.c-nav {
+    @apply flex -lg:flex-col -lg:w-full -lg:shadow-dark -lg:fixed -lg:top-0 -lg:pt-16 -lg:left-0 bg-white z-10 dark:bg-black transition;
+}
+.c-nav .router-link-active {
+    @apply bg-primary text-white;
+}
+</style>

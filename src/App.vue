@@ -31,7 +31,7 @@ export default {
                 { linkName: "byName", name: "searchPage" },
                 { linkName: "byLetter", name: "searchLetter" },
                 { linkName: "ingredients", name: "searchIngredients" },
-                // { linkName: "byCountry", name: "searchCountry" },
+                { linkName: "byCountry", name: "searchCountry" },
             ],
         };
     },

@@ -12,6 +12,8 @@
     "search-input-name": "Пошук по назві",
     "search-input-letter": "Пошук по букві",
     "search-input-ingredient": "Пошук по інгредієнтах",
+    "search-input-country": "Пошук по країні",
+
     "random-meals": "Випадкові страви",
 
     "ws": {
@@ -24,6 +26,7 @@
     "error_msg": "Нічого не знайдено. Повторіть запит англійською :)",
     "back": "Назад",
     "no-meals": "Таких страв немає",
+    "no-ingredients": "Таких інгредієнтів немає",
 
     "watch-youtube": "Дивитися на Youtube",
     "watch-src": "Дивитися джерело",

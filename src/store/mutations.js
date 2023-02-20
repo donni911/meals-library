@@ -11,7 +11,9 @@ function setMealsByIngredient(state, meals) {
 }
 
 function setMealsByCountry(state, meals) {
+    
     state.mealsByCountry = meals || [];
+    console.log(state.mealsByCountry ,meals);
 }
 
 function setLanguage(state, lang) {
