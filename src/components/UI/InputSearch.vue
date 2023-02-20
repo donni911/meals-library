@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { typeWriter, addSymbol } from "../../modules/TypeWriter";
+import { TypeWriter, addSymbol } from "../../modules/TypeWriter";
 
 export default {
     props: {
@@ -45,7 +45,7 @@ export default {
                 gsap?.kill();
                 symbol?.kill();
 
-                gsap = typeWriter(target, value);
+                gsap = TypeWriter(target, value);
                 symbol = addSymbol(this.$refs.symbol);
             },
             {

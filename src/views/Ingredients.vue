@@ -15,9 +15,10 @@
             :key="ingredient.idIngredient"
             class="block bg-white dark:bg-slate-200 rounded p-3 mb-3 shadow"
         >
-            <h3 class="text-2xl font-bold mb-2">
-                {{ ingredient.strIngredient }}
-            </h3>
+            <h3
+                class="text-2xl font-bold mb-2"
+                v-html="highlightText(ingredient.strIngredient, inputValue)"
+            ></h3>
             <p>{{ ingredient.strDescription }}</p>
         </router-link>
     </div>
@@ -26,6 +27,7 @@
 <script>
 import InputSearch from "../components/UI/InputSearch.vue";
 import axiosClient from "../axiosClient";
+import strHighlight from "../modules/strHighlight";
 
 export default {
     components: { InputSearch },
@@ -34,6 +36,7 @@ export default {
         return {
             inputValue: "",
             ingredients: [],
+            highlightText: strHighlight,
         };
     },
 

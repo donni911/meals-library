@@ -15,7 +15,7 @@ const addSymbol = (target) => {
     });
 };
 
-const typeWriter = (el, data, duration = 1) => {
+const TypeWriter = (el, data, duration = 1) => {
     //main timeline
     let tlMaster = gsap.timeline({ repeat: -1 });
 
@@ -48,4 +48,4 @@ const typeWriter = (el, data, duration = 1) => {
     }
 };
 
-export { typeWriter, addSymbol };
+export { TypeWriter, addSymbol };

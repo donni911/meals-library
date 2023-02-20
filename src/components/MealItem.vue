@@ -15,7 +15,7 @@
                 {{ meal.strInstructions }}
             </p>
         </div>
-        <div class="flex items-center mt-auto px-6 pt-4 pb-6">
+        <div class="flex items-center mt-auto px-6 pt-4 pb-4">
             <link-button :link="meal.strYoutube" :type="'warning'">
                 Youtube</link-button
             >
