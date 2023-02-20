@@ -1,14 +1,18 @@
 {
     "homePage": "Home",
     "searchPage": "Search meals",
-    "searchLetter": "Meals by letter",
-    "searchIngredients": "Meals by ingredients",
-    "searchCountry": "Meals by country",
+    "searchLetter": "By letter",
+    "searchIngredients": "By ingredients",
+    "searchCountry": "By country",
 
     "theme-light": "Light",
     "theme-dark": "Dark",
 
     "search-input": "Search for ",
+    "search-input-name": "Search by name ",
+    "search-input-letter": "Search by letter ",
+    "search-input-ingredient": "Search by ingredient ",
+    "random-meals": "Random meals",
 
     "ws": {
         "ws-ingredients": "ingredients 🥦",
@@ -18,5 +22,17 @@
     },
     "error_msg": "Nothing to found.",
     "back": "Back",
-    "no-meals": "There are no meals"
+    "no-meals": "There are no meals",
+
+    "watch-youtube": "Watch on Youtube",
+    "watch-src": "Watch Source",
+
+    "category": "Category",
+    "tags": "Tags",
+    "country": "Country",
+
+    "ingredients": "Ingredients",
+    "measures": "Measures",
+
+    "description": "Description"
 }

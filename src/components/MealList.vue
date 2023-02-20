@@ -2,7 +2,7 @@
     <div>
         <div
             v-if="meals.length"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 py-8"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 py-2 md:py-8"
         >
             <meal-item
                 v-for="meal of meals"
@@ -12,7 +12,9 @@
         </div>
         <div v-if="!meals.length" class="flex justify-center m-4">
             <Transition name="fade" mode="out-in">
-                <span :key="$t('no-meals')">{{ $t("no-meals") }}</span>
+                <span :key="$t('no-meals')" class="dark:text-white">{{
+                    $t("no-meals")
+                }}</span>
             </Transition>
         </div>
     </div>

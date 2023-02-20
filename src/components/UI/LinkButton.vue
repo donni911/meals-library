@@ -2,8 +2,8 @@
     <a
         :href="link"
         target="_blank"
-        class="inline-block px-3 py-2 border-2 rounded transition-colors cursor-pointer"
-        :class="type"
+        class="inline-block text-center px-3 py-2 border-2 rounded transition-colors cursor-pointer"
+        :class="computedType"
         ><slot></slot
     ></a>
 </template>
@@ -20,7 +20,7 @@ export default {
     },
 
     computed: {
-        type() {
+        computedType() {
             switch (this.type) {
                 case "secondary":
                     return "border-secondary hover:bg-secondary text-secondary hover:text-white ";

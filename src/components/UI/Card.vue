@@ -1,5 +1,5 @@
 <template>
-    <div class="p-8" :class="class">
+    <div class="p-4 md:p-8" :class="class">
         <slot></slot>
     </div>
 </template>

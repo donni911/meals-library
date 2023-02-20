@@ -1,5 +1,14 @@
 <template>
     <div>
+        <Transition name="fade" mode="out-in">
+            <h1
+                class="text-2xl md:text-4xl font-bold mb-4 text-primary"
+                :key="$t('random-meals')"
+            >
+                {{ $t("random-meals") }}
+            </h1>
+        </Transition>
+
         <div class="flex justify-center flex-col"></div>
         <meal-list :meals="meals" />
     </div>
@@ -7,23 +16,25 @@
 
 <script>
 import MealList from "../components/MealList.vue";
+import axiosClient from "../axiosClient";
 
 export default {
     components: {
         MealList,
     },
 
-    computed: {
-        meals() {
-            return this.$store.state.mealsByLetter || [];
-        },
+    data() {
+        return {
+            meals: [],
+        };
     },
 
     mounted() {
-        this.$store.dispatch(
-            "searchMealsByLetter",
-            this.$route.params.letter || "A"
-        );
+        for (let i = 0; i < 10; i++) {
+            axiosClient.get("random.php").then(({ data }) => {
+                this.meals.push(data.meals[0]);
+            });
+        }
     },
 };
 </script>

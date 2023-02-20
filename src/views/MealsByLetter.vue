@@ -1,11 +1,20 @@
 <template>
     <div>
-        <div class="flex justify-center mt-2">
+        <Transition name="fade" mode="out-in">
+            <h1
+                class="text-2xl md:text-4xl font-bold mb-4 text-primary"
+                :key="$t('search-input-letter')"
+            >
+                {{ $t("search-input-letter") }}
+            </h1>
+        </Transition>
+
+        <div class="flex flex-wrap justify-center mt-2">
             <router-link
                 :to="{ name: 'byLetter', params: { letter } }"
                 v-for="letter of letters"
                 :key="letter"
-                class="uppercase p-1.5 hover:-translate-y-2 dark:text-white dark:hover:text-primary hover:text-primary transition-all"
+                class="uppercase py-1.5 px-2.5 sm:p-1.5 sm:hover:-translate-y-2 dark:text-white dark:hover:text-primary hover:text-primary transition-all"
             >
                 {{ letter }}
             </router-link>
@@ -49,6 +58,6 @@ export default {
 
 <style scoped>
 .router-link-active {
-    @apply text-primary -translate-y-4 px-3;
+    @apply text-primary sm:-translate-y-4 sm:px-3;
 }
 </style>

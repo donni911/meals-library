@@ -5,7 +5,7 @@
             src="@image/loader.png"
             :class="classes + ' object-contain'"
         />
-        <transition name="fade" mode="out-in">
+        <Transition name="fade" mode="out-in">
             <img
                 v-show="imageLoaded"
                 :src="meal.strMealThumb"
@@ -13,7 +13,7 @@
                 :class="classes"
                 @load="onImageLoaded"
             />
-        </transition>
+        </Transition>
     </div>
 </template>
 

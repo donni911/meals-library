@@ -1,12 +1,16 @@
 <template>
     <div>
-        <button
-            class="inline-block px-3 py-2 rounded bg-secondary text-white"
-            @click="$router.go(-1)"
-        >
-            {{ $t("back") }}
-        </button>
-        <h1 class="text-4xl font-bold mb-4 mt-4 text-primary">
+        <Transition name="fade" mode="out-in">
+            <button
+                class="inline-block px-3 py-2 rounded bg-secondary text-white"
+                @click="$router.go(-1)"
+                :key="$t('back')"
+            >
+                {{ $t("back") }}
+            </button>
+        </Transition>
+
+        <h1 class="text-2xl md:text-4xl font-bold mb-4 mt-4 text-primary">
             Meals with {{ $route.params.ingredients }}
         </h1>
 

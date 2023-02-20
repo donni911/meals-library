@@ -5,7 +5,7 @@
         <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
             <image-wrap
                 :meal="meal"
-                :classes="'rounded-t-xl w-full h-48  object-cover'"
+                :classes="'rounded-t-xl aspect-video object-cover'"
             />
         </router-link>
 
@@ -51,14 +51,3 @@ export default {
     },
 };
 </script>
-
-<style>
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.1s linear;
-}
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-</style>

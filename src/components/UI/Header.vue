@@ -1,64 +1,69 @@
 <template>
     <header
-        class="bg-white shadow-light dark:bg-black dark:shadow-dark px-8 transition-colors"
+        class="bg-white dark:bg-black shadow-light dark:shadow-dark px-4 md:px-8 transition-colors static z-20"
     >
-        <div class="flex items-center justify-between -mx-3">
-            <router-link
-                :to="{ name: 'home' }"
-                class="py-5 px-3 transition-colors hover:text-primary dark:hover:text-primary dark:text-white"
-            >
-                <Transition name="fade" mode="out-in">
-                    <span :key="$t('homePage')">{{ $t("homePage") }}</span>
-                </Transition>
+        <div class="flex items-center justify-between">
+            <router-link :to="{ name: 'home' }" class="py-2 px-2 group">
+                <div class="flex items-center">
+                    <logo
+                        class="w-10 h-10 group-hover:[&>path]:fill-warning [&>path]:fill-primary dark:[&>path]:fill-white [&>path]:transition"
+                    />
+                </div>
             </router-link>
-            <div class="gap-5">
+
+            <div class="gap-5 ml-auto lg:mx-auto">
                 <switch-button :text="$t(themeText)" @switch="themeSwitch" />
                 <switch-button :text="langText" @switch="langSwitch" />
             </div>
-            <ul>
-                <li>
-                    <div class="flex align-center justify-between">
-                        <router-link
-                            :to="{ name: 'byName' }"
-                            class="block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
-                        >
-                            <Transition name="fade" mode="out-in">
-                                <span :key="$t('searchPage')">
-                                    {{ $t("searchPage") }}
-                                </span>
-                            </Transition>
-                        </router-link>
-                        <router-link
-                            :to="{ name: 'byLetter' }"
-                            class="block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
-                        >
-                            <Transition name="fade" mode="out-in">
-                                <span :key="$t('searchLetter')">
-                                    {{ $t("searchLetter") }}
-                                </span>
-                            </Transition></router-link
-                        >
-                        <router-link
-                            :to="{ name: 'ingredients' }"
-                            class="block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
-                        >
-                            <Transition name="fade" mode="out-in">
-                                <span :key="$t('searchIngredients')">
-                                    {{ $t("searchIngredients") }}
-                                </span>
-                            </Transition></router-link
-                        >
-                        <router-link
-                            :to="{ name: 'byCountry' }"
-                            class="block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
-                        >
-                            <Transition name="fade" mode="out-in">
-                                <span :key="$t('searchCountry')">
-                                    {{ $t("searchCountry") }}
-                                </span>
-                            </Transition></router-link
-                        >
-                    </div>
+
+            <div class="flex lg:hidden">
+                <button @click="toggleMenu" type="button" class="w-6 h-6 z-30">
+                    <span
+                        class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition"
+                        :class="{
+                            'translate-x-0 translate-y-[5px] -rotate-45  delay-200':
+                                menuOpen,
+                        }"
+                    ></span>
+                    <span
+                        class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition my-[3px]"
+                        :class="{
+                            'translate-x-1.5 opacity-0 delay-100': menuOpen,
+                        }"
+                    ></span>
+                    <span
+                        class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition"
+                        :class="{
+                            'translate-x-0 translate-y-[-5px] rotate-45 delay-300':
+                                menuOpen,
+                        }"
+                    ></span>
+                </button>
+            </div>
+
+            <ul
+                :class="
+                    menuOpen
+                        ? '-lg:opacity-100 -lg:translate-y-0 -lg:pointer-events-auto'
+                        : '-lg:opacity-0  -lg:-translate-y-5 -lg:pointer-events-none'
+                "
+                class="flex -lg:flex-col -lg:w-full -lg:shadow-dark -lg:fixed -lg:top-0 -lg:pt-16 -lg:left-0 bg-white z-10 dark:bg-black transition"
+            >
+                <li v-for="item in menuItems">
+                    <router-link
+                        :to="{ name: item.linkName }"
+                        @click="toggleMenu"
+                        class="-lg:px-8 block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
+                    >
+                        <Transition name="fade" mode="out-in">
+                            <span
+                                :key="$t(item.name)"
+                                class="whitespace-nowrap"
+                            >
+                                {{ $t(item.name) }}
+                            </span>
+                        </Transition>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -69,8 +74,12 @@
 import SwitchButton from "./SwitchButton.vue";
 import store from "../../store";
 
+import logo from "../../assets/logo.svg";
+
 export default {
-    components: { SwitchButton },
+    components: { SwitchButton, logo },
+
+    props: ["menuItems", "menuOpen"],
     data() {
         return {
             isDark: false,
@@ -86,6 +95,10 @@ export default {
         },
     },
     methods: {
+        toggleMenu() {
+            this.$emit("menu-active", this.menuOpen);
+        },
+
         themeSwitch() {
             const html = document.documentElement;
 

@@ -1,26 +1,35 @@
 <template>
     <div>
-        <h1 class="text-4xl font-bold mb-4 text-primary">Ingredients</h1>
+        <Transition name="fade" mode="out-in">
+            <h1
+                class="text-2xl md:text-4xl font-bold mb-4 text-primary"
+                :key="$t('search-input-ingredient')"
+            >
+                {{ $t("search-input-ingredient") }}
+            </h1>
+        </Transition>
+
         <input-search
             v-model="inputValue"
             :tWriter="'ws.ws-ingredients'"
             class="mb-4"
         />
-        <router-link
-            v-for="ingredient of computedIngredients"
-            :to="{
-                name: 'byIngredients',
-                params: { ingredients: ingredient.strIngredient },
-            }"
-            :key="ingredient.idIngredient"
-            class="block bg-white dark:bg-slate-200 rounded p-3 mb-3 shadow"
-        >
-            <h3
-                class="text-2xl font-bold mb-2"
-                v-html="highlightText(ingredient.strIngredient, inputValue)"
-            ></h3>
-            <p>{{ ingredient.strDescription }}</p>
-        </router-link>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <router-link
+                v-for="ingredient of computedIngredients"
+                :to="{
+                    name: 'byIngredients',
+                    params: { ingredients: ingredient.strIngredient },
+                }"
+                :key="ingredient.idIngredient"
+                class="block bg-white dark:bg-slate-200 rounded p-4 shadow hover:scale-105 transition"
+            >
+                <h3
+                    class="text-2xl font-bold"
+                    v-html="highlightText(ingredient.strIngredient, inputValue)"
+                ></h3>
+            </router-link>
+        </div>
     </div>
 </template>
 

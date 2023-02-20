@@ -4,7 +4,7 @@
         @click="$emit('switch')"
     >
         <Transition name="fade" mode="out-in">
-            <span :key="text"> {{ text }}</span>
+            <span :key="text" class="whitespace-nowrap"> {{ text }}</span>
         </Transition>
     </button>
 </template>

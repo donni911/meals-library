@@ -1,5 +1,14 @@
 <template>
     <div>
+        <Transition name="fade" mode="out-in">
+            <h1
+                class="text-2xl md:text-4xl font-bold mb-4 text-primary"
+                :key="$t('search-input-name')"
+            >
+                {{ $t("search-input-name") }}
+            </h1>
+        </Transition>
+
         <input-search v-model="inputValue" :tWriter="'ws.ws-name'" />
         <meal-list :meals="meals" />
     </div>
