@@ -19,3 +19,7 @@ body {
     -webkit-line-clamp: 3;
     white-space: pre-wrap;
 }
+
+.router-active.router-link-active {
+    @apply text-primary sm:-translate-y-4 sm:px-3 pointer-events-none;
+}

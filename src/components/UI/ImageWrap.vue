@@ -1,16 +1,13 @@
 <template>
     <div class="relative block rounded-md w-full" :class="classes">
-        <img
-            v-if="!imageLoaded"
-            src="@image/loader.png"
-            class="object-contain'"
-        />
+        <img v-if="!imageLoaded" src="@image/logo.svg" />
         <Transition name="fade" mode="out-in">
             <img
                 v-show="imageLoaded"
                 :src="meal.strMealThumb"
                 :alt="meal.strMeal"
                 @load="onImageLoaded"
+                class="object-cover"
             />
         </Transition>
     </div>

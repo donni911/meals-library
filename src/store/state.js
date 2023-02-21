@@ -5,6 +5,7 @@ export default {
     mealsByIngredient: [],
     mealsByCountry: [],
     mealsRandom: [],
+    randomMeals:[],
     lang: null,
 
     isLoading: true,

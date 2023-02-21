@@ -5,7 +5,7 @@
         <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
             <image-wrap
                 :meal="meal"
-                :classes="'pt-[56%] [&>img]:absolute [&>img]:rounded [&>img]:inset-0 [&>img]:h-full [&>img]:w-full [&>img]:object-cover'"
+                :classes="'pt-[56%] [&>img]:absolute [&>img]:rounded [&>img]:inset-0 [&>img]:h-full [&>img]:w-full '"
             />
         </router-link>
 
@@ -15,7 +15,10 @@
                 {{ meal.strInstructions }}
             </p>
         </div>
-        <div class="flex items-center mt-auto px-6 pt-4 pb-4">
+        <div
+            class="flex items-center mt-auto px-6 pt-4 pb-4"
+            v-if="meal.strYoutube"
+        >
             <link-button :link="meal.strYoutube" :type="'warning'">
                 Youtube</link-button
             >

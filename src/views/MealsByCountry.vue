@@ -17,7 +17,7 @@
                     params: { country: country.strArea },
                 }"
                 :key="country"
-                class="uppercase p-3 sm:p-1.5 group dark:text-white dark:hover:text-primary hover:text-primary transition-all pointer-events-auto"
+                class="router-active uppercase p-3 sm:p-1.5 group dark:text-white dark:hover:text-primary hover:text-primary transition-all pointer-events-auto"
             >
                 <span
                     class="inline-block sm:group-hover:-translate-y-4 transition-transform"
@@ -69,9 +69,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-.router-link-active {
-    @apply text-primary sm:-translate-y-4 sm:px-3 pointer-events-none;
-}
-</style>

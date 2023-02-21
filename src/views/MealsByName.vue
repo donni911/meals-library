@@ -10,7 +10,10 @@
         </Transition>
 
         <input-search v-model="inputValue" :tWriter="'ws.ws-name'" />
-        <meal-list :meals="meals" />
+        <meal-list :meals="meals" v-if="!isLoading" />
+        <div class="flex justify-center m-4" v-else>
+            <span class="dark:text-white">{{ $t("loading") }}</span>
+        </div>
     </div>
 </template>
 
@@ -29,6 +32,7 @@ export default {
         return {
             inputValue: "",
             isMeals: false,
+            isLoading: false,
         };
     },
     computed: {
@@ -50,8 +54,11 @@ export default {
     },
 
     methods: {
-        searchMeals: debounce((value) => {
+        searchMeals: debounce(function (value) {
+            this.isLoading = true;
+
             store.dispatch("searchMeals", value);
+            this.isLoading = false;
         }, 300),
     },
 

@@ -14,7 +14,7 @@
                 :to="{ name: 'byLetter', params: { letter } }"
                 v-for="letter of letters"
                 :key="letter"
-                class="uppercase py-1.5 group px-2.5 sm:p-1.5 dark:text-white dark:hover:text-primary hover:text-primary transition-all pointer-events-auto"
+                class="router-active uppercase py-1.5 group px-2.5 sm:p-1.5 dark:text-white dark:hover:text-primary hover:text-primary transition-all pointer-events-auto"
             >
                 <span
                     class="inline-block sm:group-hover:-translate-y-4 transition-transform"
@@ -59,9 +59,3 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-.router-link-active {
-    @apply text-primary sm:-translate-y-4 sm:px-3 pointer-events-none;
-}
-</style>

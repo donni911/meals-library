@@ -2,6 +2,7 @@
     <Header
         :menu-items="menuItems"
         @menu-active="toggleOverlay"
+        @close-menu="closeMenu"
         :show-menu="showMenu"
     />
     <router-view v-slot="{ Component }" class="max-w-[1560px] mx-auto">
@@ -37,6 +38,11 @@ export default {
     },
 
     methods: {
+        closeMenu() {
+            this.showMenu = false;
+            document.body.classList.remove("overflow-hidden");
+        },
+
         toggleOverlay() {
             this.showMenu = !this.showMenu;
 

@@ -52,7 +52,7 @@
                 <li v-for="item in menuItems">
                     <router-link
                         :to="{ name: item.linkName }"
-                        @click="toggleMenu"
+                        @click="$emit('close-menu')"
                         class="-lg:px-8 block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
                     >
                         <Transition name="fade" mode="out-in">
@@ -83,9 +83,8 @@ export default {
 
     data() {
         return {
-            isDark: false,
+            isDark: null,
             isEnglish: store.state.lang,
-            // showMenu: false,
         };
     },
     computed: {
@@ -107,9 +106,13 @@ export default {
 
             this.$data.isDark = !this.$data.isDark;
 
-            this.$data.isDark
-                ? html.classList.add("dark")
-                : html.classList.remove("dark");
+            if (this.$data.isDark) {
+                localStorage.theme = "dark";
+                html.classList.add("dark");
+            } else {
+                localStorage.theme = "light";
+                html.classList.remove("dark");
+            }
         },
 
         langSwitch() {
@@ -124,18 +127,34 @@ export default {
             }
         },
     },
+
     beforeCreate() {
         this.$store.commit("initialiseLang");
     },
 
     mounted() {
         //init theme
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? (this.$data.isDark = true)
-            : false;
+        this.$data.isDark = localStorage.theme === "dark";
 
         //init lang
         this.$i18n.locale = store.state.lang;
+
+        //os theme switching
+        const html = document.documentElement;
+
+        window
+            .matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", (e) => {
+                if (e.matches) {
+                    html.classList.add("dark");
+                    localStorage.theme = "dark";
+                    this.$data.isDark = true;
+                } else {
+                    html.classList.remove("dark");
+                    localStorage.theme = "light";
+                    this.$data.isDark = false;
+                }
+            });
     },
 };
 </script>
@@ -145,6 +164,6 @@ export default {
     @apply flex -lg:flex-col -lg:w-full -lg:shadow-dark -lg:fixed -lg:top-0 -lg:pt-16 -lg:left-0 bg-white z-10 dark:bg-black transition;
 }
 .c-nav .router-link-active {
-    @apply bg-primary text-white;
+    @apply bg-secondary text-white;
 }
 </style>

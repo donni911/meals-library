@@ -14,16 +14,24 @@ export function searchMealsByLetter({ commit }, letter) {
 
 export function searchMealsByIngredient({ commit }, ingredient) {
     axiosClient.get(`filter.php?i=${ingredient}`).then(({ data }) => {
-        console.log(data);
         commit("setMealsByIngredient", data.meals);
     });
 }
 
 export function searchMealsByCountry({ commit }, country) {
-    console.log(country);
     axiosClient.get(`filter.php?a=${country}`).then(({ data }) => {
         commit("setMealsByCountry", data.meals);
     });
+}
+
+export async function getRandomMeals({ commit }) {
+    let meals = [];
+    for (let i = 0; i < 10; i++) {
+        await axiosClient.get("random.php").then(({ data }) => {
+            meals.push(data.meals[0]);
+        });
+    }
+    commit("setRandomMeals", meals);
 }
 
 export function changeLanguage({ commit }, value) {
