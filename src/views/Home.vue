@@ -2,34 +2,41 @@
     <div>
         <Transition name="fade" mode="out-in">
             <div class="flex items-center mb-4">
-                <h1
-                    class="text-2xl md:text-4xl font-bold text-primary"
-                    :key="$t('random-meals')"
-                >
-                    {{ $t("random-meals") }}
-                </h1>
+                <Transition name="fade" mode="out-in">
+                    <h1
+                        class="text-2xl md:text-4xl font-bold text-primary"
+                        :key="$t('random-meals')"
+                    >
+                        {{ $t("random-meals") }}
+                    </h1>
+                </Transition>
                 <button
                     type="button"
                     @click="refreshRandomMeals"
-                    class="w-6 h-6 ml-4 translate-y-0.5 cursor-pointer -md:w-4 -md:ml-2 -md:h-4 md:translate-y-1 group hover:rotate-45 transition-transform"
+                    class="w-6 h-6 ml-4 translate-y-0.5 cursor-pointer -md:w-4 -md:ml-2 -md:h-4 md:translate-y-1 group transition-transform"
+                    :class="{ 'hover:rotate-45': !isLoading }"
                 >
                     <refreshSvg
-                        class="w-full h-full group-hover:[&>path]:fill-warning [&>path]:fill-primary dark:[&>path]:fill-white [&>path]:transition"
+                        :class="{
+                            'animate-spin': isLoading,
+                            'group-hover:[&>path]:fill-warning': !isLoading,
+                        }"
+                        class="w-full h-full [&>path]:fill-primary dark:[&>path]:fill-white [&>path]:transition"
                     />
                 </button>
             </div>
         </Transition>
 
-        <div class="flex justify-center flex-col"></div>
         <meal-list :meals="meals" v-if="!isLoading" />
-        <div class="flex justify-center m-4" v-else>
-            <span class="dark:text-white">{{ $t("loading") }}</span>
+        <div class="flex justify-center" v-else>
+            <spinner />
         </div>
     </div>
 </template>
 
 <script>
 import MealList from "../components/MealList.vue";
+import Spinner from "../components/UI/Spinner.vue";
 import store from "../store";
 import refreshSvg from "../assets/refresh.svg";
 
@@ -37,6 +44,7 @@ export default {
     components: {
         MealList,
         refreshSvg,
+        Spinner,
     },
 
     data() {

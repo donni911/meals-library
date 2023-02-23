@@ -2,7 +2,7 @@
     <a
         :href="link"
         target="_blank"
-        class="inline-block text-center px-3 py-2 border-2 rounded transition-colors cursor-pointer"
+        class="inline-block text-center px-3 py-2 rounded transition-colors cursor-pointer"
         :class="computedType"
         ><slot></slot
     ></a>
@@ -23,11 +23,11 @@ export default {
         computedType() {
             switch (this.type) {
                 case "secondary":
-                    return "border-secondary hover:bg-secondary text-secondary hover:text-white ";
+                    return "text-secondary hover:text-white ";
                 case "warning":
-                    return "border-warning hover:bg-warning text-warning hover:text-white";
+                    return "border-warning bg-warning hover:bg-transparent hover:text-warning text-white border-2 ";
                 default:
-                    return "border-secondary hover:bg-secondary text-secondary hover:text-white ";
+                    return "border-secondary hover:bg-secondary text-secondary hover:text-white border-2 ";
             }
         },
     },

@@ -1,9 +1,13 @@
 <template>
     <header
-        class="bg-white dark:bg-black shadow-light dark:shadow-dark px-4 md:px-8 transition-colors static z-20"
+        class="-lg:sticky -lg:top-0 bg-white dark:bg-black shadow-light dark:shadow-dark px-4 md:px-8 transition-colors static z-20"
     >
         <div class="flex items-center justify-between">
-            <router-link :to="{ name: 'home' }" class="py-2 px-2 group">
+            <router-link
+                :to="{ name: 'home' }"
+                class="py-2 px-2 group"
+                @click="$emit('close-menu')"
+            >
                 <div class="flex items-center">
                     <logo
                         class="w-10 h-10 group-hover:[&>path]:fill-warning [&>path]:fill-primary dark:[&>path]:fill-white [&>path]:transition"
@@ -17,7 +21,7 @@
             </div>
 
             <div class="flex lg:hidden">
-                <button @click="toggleMenu" type="button" class="w-6 h-6 z-30">
+                <button @click="toggleMenu" type="button" class="w-6 h-6">
                     <span
                         class="block h-[2px] rounded-xl w-full bg-black dark:bg-white transition"
                         :class="{
@@ -41,31 +45,33 @@
                 </button>
             </div>
 
-            <ul
+            <div
                 :class="
                     showMenu
                         ? '-lg:opacity-100 -lg:translate-y-0 -lg:pointer-events-auto'
                         : '-lg:opacity-0  -lg:-translate-y-5 -lg:pointer-events-none'
                 "
-                class="c-nav"
+                class="-lg:w-full -lg:fixed -lg:left-0 -lg:top-16 z-10 -lg:shadow-dark -lg:h-[50vh] -lg:overflow-y-scroll"
             >
-                <li v-for="item in menuItems">
-                    <router-link
-                        :to="{ name: item.linkName }"
-                        @click="$emit('close-menu')"
-                        class="-lg:px-8 block py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
-                    >
-                        <Transition name="fade" mode="out-in">
-                            <span
-                                :key="$t(item.name)"
-                                class="whitespace-nowrap"
-                            >
-                                {{ $t(item.name) }}
-                            </span>
-                        </Transition>
-                    </router-link>
-                </li>
-            </ul>
+                <ul class="c-nav">
+                    <li v-for="item in menuItems">
+                        <router-link
+                            :to="{ name: item.linkName }"
+                            @click="$emit('close-menu')"
+                            class="-lg:px-8 block -lg:pr-20 py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
+                        >
+                            <Transition name="fade" mode="out-in">
+                                <span
+                                    :key="$t(item.name)"
+                                    class="whitespace-nowrap"
+                                >
+                                    {{ $t(item.name) }}
+                                </span>
+                            </Transition>
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 </template>
@@ -161,8 +167,9 @@ export default {
 
 <style scoped>
 .c-nav {
-    @apply flex -lg:flex-col -lg:w-full -lg:shadow-dark -lg:fixed -lg:top-0 -lg:pt-16 -lg:left-0 bg-white z-10 dark:bg-black transition;
+    @apply flex -lg:flex-col  bg-white dark:bg-black transition;
 }
+
 .c-nav .router-link-active {
     @apply bg-secondary text-white;
 }
