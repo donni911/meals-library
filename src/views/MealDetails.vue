@@ -2,7 +2,7 @@
     <card>
         <Transition name="fade" mode="out-in">
             <button
-                class="inline-block px-4 py-2 rounded border-2 border-secondary hover:bg-secondary text-black dark:text-white mb-4 transition"
+                class="inline-block px-4 py-2 rounded border-2 border-secondary hover:bg-secondary hover:text-white text-black dark:text-white mb-4 transition"
                 @click="$router.go(-1)"
                 :key="$t('back')"
             >
@@ -49,7 +49,7 @@
             </div>
             <div class="lg:w-[75%] -lg:mt-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 text-lg pb-2">
-                    <div>
+                    <div class="md:mr-4">
                         <h2
                             class="text-lg md:text-2xl font-semibold mb-2 dark:text-white"
                         >
@@ -68,23 +68,36 @@
                         <ul>
                             <template v-for="(el, ind) of new Array(20)"
                                 ><li
-                                    class="dark:text-white"
+                                    class="dark:text-white flex justify-between border-b-2 border-secondary"
                                     v-if="
                                         meal[`strIngredient${ind + 1}`] &&
                                         meal[`strMeasure${ind + 1}`]
                                     "
                                 >
-                                    {{ ind + 1 }}.
-                                    {{
-                                        meal[`strIngredient${ind + 1}`] +
-                                        "/" +
+                                    <router-link
+                                        class="hover:text-primary transition-colors"
+                                        :to="{
+                                            name: 'byIngredients',
+                                            params: {
+                                                ingredients:
+                                                    meal[
+                                                        `strIngredient${
+                                                            ind + 1
+                                                        }`
+                                                    ],
+                                            },
+                                        }"
+                                    >
+                                        {{ meal[`strIngredient${ind + 1}`] }}
+                                    </router-link>
+                                    <span>{{
                                         meal[`strMeasure${ind + 1}`]
-                                    }}
+                                    }}</span>
                                 </li>
                             </template>
                         </ul>
                     </div>
-                    <div class="my-4 text-lg md:pl-4">
+                    <div class="my-4 text-lg sm:pl-4">
                         <div v-if="meal.strCategory" class="dark:text-white">
                             <Transition name="fade" mode="out-in">
                                 <strong :key="$t('category')">
@@ -99,7 +112,15 @@
                                     {{ $t("country") }}:
                                 </strong>
                             </Transition>
-                            {{ meal.strArea }}
+                            <router-link
+                                class="hover:text-primary transition-colors"
+                                :to="{
+                                    name: 'byCountry',
+                                    params: { country: meal.strArea },
+                                }"
+                            >
+                                {{ meal.strArea }}
+                            </router-link>
                         </div>
                         <div v-if="meal.strTags" class="dark:text-white">
                             <Transition name="fade" mode="out-in">
@@ -144,23 +165,30 @@ export default {
     },
     data() {
         return {
-            meal: "",
             isError: false,
         };
     },
 
-    mounted() {
-        axiosClient
-            .get(`lookup.php?i=${this.$route.params.id}`)
-            .then((data) => {
-                try {
-                    this.meal = data.data.meals[0] || {};
+    computed: {
+        meal() {
+            return this.$store.state.meal || {};
+        },
+    },
 
-                    this.isError = false;
-                } catch (error) {
-                    this.isError = true;
-                }
-            });
+    methods: {
+        async fetchMeal(id) {
+            try {
+                const response = await axiosClient.get(`lookup.php?i=${id}`);
+                this.$store.commit("setMeal", response.data.meals[0]);
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    },
+
+    created() {
+        const id = this.$route.params.id;
+        this.fetchMeal(id);
     },
 };
 </script>

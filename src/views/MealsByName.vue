@@ -10,7 +10,7 @@
         </Transition>
 
         <input-search v-model="inputValue" :tWriter="'ws.ws-name'" />
-        <meal-list :meals="meals" v-if="!isLoading" />
+        <meal-list :meals="meals" v-if="!isLoading" :isChoosed="inputValue" />
         <div class="flex justify-center m-4" v-else>
             <span class="dark:text-white">{{ $t("loading") }}</span>
         </div>

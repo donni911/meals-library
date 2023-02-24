@@ -19,7 +19,11 @@ function setLanguage(state, lang) {
     state.lang = lang;
 }
 
-function setRandomMeals(state, randomMeals) {    
+function setMeal(state, meal) {
+    state.meal = meal;
+}
+
+function setRandomMeals(state, randomMeals) {
     state.randomMeals = randomMeals;
 }
 
@@ -39,4 +43,5 @@ export {
     setLanguage,
     initialiseLang,
     setRandomMeals,
+    setMeal,
 };

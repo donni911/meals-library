@@ -1,7 +1,7 @@
 <template>
     <div>
         <div
-            v-if="meals.length"
+            v-if="meals.length && isChoosed"
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 py-2 md:py-8"
         >
             <meal-item
@@ -10,7 +10,14 @@
                 :meal="meal"
             ></meal-item>
         </div>
-        <div v-if="!meals.length" class="flex justify-center m-4">
+        <div v-else-if="!isChoosed" class="flex justify-center m-4">
+            <Transition name="fade" mode="out-in">
+                <span :key="$t('choose')" class="dark:text-white">{{
+                    $t("choose")
+                }}</span>
+            </Transition>
+        </div>
+        <div v-else class="flex justify-center m-4">
             <Transition name="fade" mode="out-in">
                 <span :key="$t('no-meals')" class="dark:text-white">{{
                     $t("no-meals")
@@ -26,6 +33,6 @@ export default {
     components: {
         MealItem,
     },
-    props: ["meals"],
+    props: ["meals", "isChoosed"],
 };
 </script>

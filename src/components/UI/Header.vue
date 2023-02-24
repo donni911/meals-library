@@ -1,11 +1,11 @@
 <template>
     <header
-        class="-lg:sticky -lg:top-0 bg-white dark:bg-black shadow-light dark:shadow-dark px-4 md:px-8 transition-colors static z-20"
+        class="sticky top-0 bg-white dark:bg-black shadow-light dark:shadow-dark px-4 md:px-8 transition-colors z-20"
     >
         <div class="flex items-center justify-between">
             <router-link
                 :to="{ name: 'home' }"
-                class="py-2 px-2 group"
+                class="px-2 group"
                 @click="$emit('close-menu')"
             >
                 <div class="flex items-center">
@@ -17,7 +17,7 @@
 
             <div class="gap-5 ml-auto lg:mx-auto">
                 <switch-button :text="$t(themeText)" @switch="themeSwitch" />
-                <switch-button :text="langText" @switch="langSwitch" />
+                <switch-button :text="$t(langText)" @switch="langSwitch" />
             </div>
 
             <div class="flex lg:hidden">
@@ -49,16 +49,16 @@
                 :class="
                     showMenu
                         ? '-lg:opacity-100 -lg:translate-y-0 -lg:pointer-events-auto'
-                        : '-lg:opacity-0  -lg:-translate-y-5 -lg:pointer-events-none'
+                        : '-lg:opacity-0  -lg:translate-y-5 -lg:pointer-events-none'
                 "
-                class="-lg:w-full -lg:fixed -lg:left-0 -lg:top-16 z-10 -lg:shadow-dark -lg:h-[50vh] -lg:overflow-y-scroll"
+                class="-lg:w-full -lg:fixed -lg:left-0 -lg:top-[52px] z-10 -lg:shadow-dark -lg:max-h-[40vh] -lg:overflow-y-scroll transition"
             >
                 <ul class="c-nav">
                     <li v-for="item in menuItems">
                         <router-link
                             :to="{ name: item.linkName }"
                             @click="$emit('close-menu')"
-                            class="-lg:px-8 block -lg:pr-20 py-5 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
+                            class="-lg:px-8 block -lg:pr-20 py-4 px-3 transition-colors hover:bg-primary hover:text-white dark:text-white"
                         >
                             <Transition name="fade" mode="out-in">
                                 <span

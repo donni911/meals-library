@@ -8,5 +8,7 @@ export default {
     randomMeals:[],
     lang: null,
 
+    meal:null,
+
     isLoading: true,
 };

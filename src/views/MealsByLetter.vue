@@ -23,7 +23,7 @@
                 </span>
             </router-link>
         </div>
-        <meal-list :meals="meals" />
+        <meal-list :meals="meals" :isChoosed="true" />
     </div>
 </template>
 

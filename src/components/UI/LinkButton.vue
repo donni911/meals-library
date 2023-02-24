@@ -23,7 +23,7 @@ export default {
         computedType() {
             switch (this.type) {
                 case "secondary":
-                    return "text-secondary hover:text-white ";
+                    return "text-secondary border-2 border-transparent hover:border-secondary ";
                 case "warning":
                     return "border-warning bg-warning hover:bg-transparent hover:text-warning text-white border-2 ";
                 default:

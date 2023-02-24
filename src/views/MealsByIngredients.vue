@@ -2,7 +2,7 @@
     <div>
         <Transition name="fade" mode="out-in">
             <button
-                class="inline-block px-3 py-2 rounded bg-secondary text-white"
+                class="inline-block px-4 py-2 rounded border-2 border-secondary hover:bg-secondary hover:text-white text-black dark:text-white mb-4 transition"
                 @click="$router.go(-1)"
                 :key="$t('back')"
             >
@@ -14,7 +14,7 @@
             Meals with {{ $route.params.ingredients }}
         </h1>
 
-        <meal-list :meals="meals" />
+        <meal-list :meals="meals" :isChoosed="true" />
     </div>
 </template>
 

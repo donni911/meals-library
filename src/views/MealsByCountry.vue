@@ -26,8 +26,15 @@
                 </span>
             </router-link>
         </div>
+        <meal-list
+            v-if="!isLoading"
+            :meals="meals"
+            :isChoosed="$route.params.country"
+        />
 
-        <meal-list :meals="meals" />
+        <div class="flex justify-center mt-4" v-else>
+            <spinner />
+        </div>
     </div>
 </template>
 
@@ -37,14 +44,17 @@ import store from "../store";
 import axiosClient from "../axiosClient";
 
 import MealList from "../components/MealList.vue";
+import Spinner from "../components/UI/Spinner.vue";
 
 export default {
     components: {
         MealList,
+        Spinner,
     },
     data() {
         return {
             countries: [],
+            isLoading: false,
         };
     },
 
@@ -54,18 +64,31 @@ export default {
         },
     },
 
-    watch: {
-        $route() {
-            store.dispatch("searchMealsByCountry", this.$route.params.country);
+    methods: {
+        async refreshCountryMeals() {
+            this.isLoading = true;
+            await store.dispatch(
+                "searchMealsByCountry",
+                this.$route.params.country
+            );
+            this.isLoading = false;
         },
     },
 
-    async mounted() {
-        await axiosClient.get("list.php?a=list").then(({ data }) => {
+    watch: {
+        $route() {
+            this.refreshCountryMeals();
+        },
+    },
+
+    mounted() {
+        //LIST OF COUNTRIES
+        axiosClient.get("list.php?a=list").then(({ data }) => {
             this.countries = data.meals;
         });
-
-        store.dispatch("searchMealsByCountry", this.$route.params.country);
+        this.isLoading = true;
+        this.refreshCountryMeals();
+        this.isLoading = false;
     },
 };
 </script>

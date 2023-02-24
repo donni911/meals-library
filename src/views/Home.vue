@@ -27,7 +27,7 @@
             </div>
         </Transition>
 
-        <meal-list :meals="meals" v-if="!isLoading" />
+        <meal-list :meals="meals" v-if="!isLoading" :isChoosed="true" />
         <div class="flex justify-center" v-else>
             <spinner />
         </div>
