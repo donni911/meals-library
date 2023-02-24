@@ -1,6 +1,8 @@
 <template>
     <div class="relative block rounded-md w-full" :class="classes">
-        <img v-if="!imageLoaded" src="@image/logo.svg" />
+        <Transition name="fade" mode="out-in">
+            <img v-if="!imageLoaded" src="@image/logo.svg"
+        /></Transition>
         <Transition name="fade" mode="out-in">
             <img
                 v-show="imageLoaded"
