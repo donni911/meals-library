@@ -70,7 +70,9 @@ export default {
                 return this.ingredients;
             }
             return this.ingredients.filter((ingredient) =>
-                ingredient.strIngredient.toLowerCase().includes(this.inputValue)
+                ingredient.strIngredient
+                    .toLowerCase()
+                    .includes(this.inputValue.toLowerCase())
             );
         },
     },

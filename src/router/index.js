@@ -9,8 +9,6 @@ import Ingredients from "../views/Ingredients.vue";
 
 import DefaultLayout from "../components/DefaultLayout.vue";
 
-import GuestLayout from "../components/GuestLayout.vue";
-
 const routes = [
     {
         path: "/",
