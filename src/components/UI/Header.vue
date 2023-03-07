@@ -51,10 +51,10 @@
                         ? '-lg:opacity-100 -lg:translate-y-0 -lg:pointer-events-auto'
                         : '-lg:opacity-0  -lg:translate-y-5 -lg:pointer-events-none'
                 "
-                class="-lg:w-full -lg:fixed -lg:left-0 -lg:top-[52px] z-10 -lg:shadow-dark -lg:max-h-[40vh] -lg:overflow-y-scroll transition"
+                class="-lg:w-full -lg:fixed -lg:left-0 -lg:top-[52px] z-10 -lg:shadow-dark -lg:max-h-[40vh] -lg:overflow-y-auto transition"
             >
                 <ul class="c-nav">
-                    <li v-for="item in menuItems">
+                    <li v-for="item in menuItems" :key="item">
                         <router-link
                             :to="{ name: item.linkName }"
                             @click="$emit('close-menu')"
@@ -80,7 +80,7 @@
 import SwitchButton from "./SwitchButton.vue";
 import store from "../../store";
 
-import logo from "../../assets/logo.svg";
+import logo from "@/assets/logo.svg";
 
 export default {
     components: { SwitchButton, logo },
